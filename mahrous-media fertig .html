@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mahrous Media — Websites die wirken.</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C9A84C;
+  --gold-light: #E8C97A;
+  --gold-dim: rgba(201,168,76,0.15);
+  --black: #080808;
+  --black2: #111;
+  --black3: #1A0A0A;
+  --white: #F5F0F0;
+  --gray: #888;
+  --border: rgba(201,168,76,0.12);
+  --red: #C0392B;
+  --red-light: #E74C3C;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  font-weight:300;
+  overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:20px 48px;
+  border-bottom:1px solid var(--border);
+  background:rgba(8,8,8,0.92);
+  backdrop-filter:blur(12px);
+}
+.nav-logo{
+  color:var(--white);
+  text-decoration:none;
+  display:flex;align-items:center;gap:14px;
+}
+.nav-logo .logo-mark{
+  width:44px;height:44px;
+  background:var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Georgia',serif;
+  font-size:20px;font-weight:700;
+  color:var(--black);letter-spacing:-1px;
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  transition:transform .3s ease;
+}
+.nav-logo:hover .logo-mark{transform:rotate(30deg);}
+.nav-logo .logo-text{
+  font-family:'Syne',sans-serif;
+  font-size:18px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+}
+.nav-logo .logo-text span{color:var(--gold);}
+.nav-logo .dot{color:var(--gold);}
+.nav-links{display:flex;gap:8px;list-style:none;}
+.nav-links a{
+  font-size:11px;letter-spacing:1.5px;color:var(--white);
+  text-decoration:none;text-transform:uppercase;
+  transition:all .2s;
+  padding:8px 16px;
+  border:1px solid rgba(201,168,76,0.3);
+  background:rgba(201,168,76,0.08);
+}
+.nav-links a:hover{
+  background:var(--gold);
+  color:var(--black);
+  border-color:var(--gold);
+}
+.nav-cta{
+  background:var(--red);color:var(--white);
+  padding:10px 24px;font-size:12px;font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;
+  text-decoration:none;font-family:'Syne',sans-serif;
+  transition:background .2s;
+}
+.nav-cta:hover{background:var(--red-light);}
+
+/* TICKER */
+.ticker-wrap{
+  margin-top:65px;
+  background:var(--red);
+  overflow:hidden;
+  padding:12px 0;
+  white-space:nowrap;
+}
+.ticker-track{
+  display:inline-flex;
+  animation:ticker 20s linear infinite;
+}
+.ticker-track span{
+  font-family:'Syne',sans-serif;
+  font-size:12px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--white);
+  padding:0 40px;
+}
+.ticker-track span.sep{color:rgba(255,255,255,0.4);}
+@keyframes ticker{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* HERO */
+.hero{
+  min-height:92vh;
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:80px 48px 60px;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 50% 70% at 90% 50%, rgba(192,57,43,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 10% 90%, rgba(201,168,76,0.06) 0%, transparent 50%);
+  pointer-events:none;
+}
+.hero-label{
+  font-size:11px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:32px;
+  display:flex;align-items:center;gap:12px;
+}
+.hero-label::before{content:'';width:32px;height:1px;background:var(--gold);}
+.hero h1{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(56px,9vw,120px);
+  font-weight:800;
+  line-height:.95;
+  letter-spacing:-2px;
+  max-width:900px;
+  margin-bottom:40px;
+}
+.hero h1 em{font-style:italic;color:var(--gold);font-weight:400;}
+.hero-sub{
+  font-size:16px;line-height:1.8;color:var(--gray);
+  max-width:480px;margin-bottom:56px;
+}
+.hero-actions{display:flex;gap:16px;align-items:center;}
+.btn-primary{
+  background:var(--red);color:var(--white);
+  padding:16px 36px;font-size:13px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  text-decoration:none;font-family:'Syne',sans-serif;
+  display:inline-flex;align-items:center;gap:12px;
+  transition:background .2s;
+}
+.btn-primary:hover{background:var(--red-light);}
+.btn-secondary{
+  color:var(--gray);font-size:13px;letter-spacing:1px;
+  text-decoration:none;text-transform:uppercase;
+  border-bottom:1px solid var(--border);
+  padding-bottom:2px;transition:color .2s,border-color .2s;
+}
+.btn-secondary:hover{color:var(--gold);border-color:var(--gold);}
+
+/* STATS */
+.stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-bottom:1px solid var(--border);
+}
+.stat{
+  padding:48px;
+  border-right:1px solid var(--border);
+  position:relative;
+}
+.stat:last-child{border-right:none;}
+.stat-num{
+  font-family:'Syne',sans-serif;
+  font-size:64px;font-weight:800;
+  color:var(--gold);line-height:1;
+  margin-bottom:8px;
+  letter-spacing:-2px;
+}
+.stat-label{font-size:12px;color:var(--gray);letter-spacing:1px;text-transform:uppercase;}
+
+/* SECTION */
+section{border-bottom:1px solid var(--border);}
+.sec-inner{padding:100px 48px;}
+.sec-tag{
+  font-size:11px;letter-spacing:3px;color:var(--gold);
+  text-transform:uppercase;margin-bottom:24px;
+  display:flex;align-items:center;gap:12px;
+}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--gold);}
+.sec-title{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(36px,5vw,64px);
+  font-weight:800;line-height:1;
+  letter-spacing:-1.5px;margin-bottom:64px;
+}
+.sec-title em{font-style:italic;color:var(--gold);font-weight:400;}
+
+/* LEISTUNGEN */
+.services{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--border);
+}
+.svc{
+  background:var(--black);
+  padding:48px 40px;
+  transition:background .3s;
+  position:relative;overflow:hidden;
+}
+.svc::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:2px;background:var(--red);
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.svc:hover{background:var(--black3);}
+.svc:hover::after{transform:scaleX(1);}
+.svc-num{
+  font-family:'Syne',sans-serif;font-size:11px;
+  letter-spacing:3px;color:var(--gold);
+  margin-bottom:32px;
+}
+.svc-icon{font-size:32px;margin-bottom:20px;}
+.svc-title{
+  font-family:'Syne',sans-serif;font-size:22px;
+  font-weight:700;margin-bottom:16px;
+}
+.svc-desc{font-size:13px;line-height:1.8;color:var(--gray);}
+.svc-example{
+  margin-top:20px;padding:16px;
+  background:var(--gold-dim);
+  border-left:2px solid var(--gold);
+  font-size:12px;color:var(--gray);line-height:1.7;
+}
+.svc-example strong{color:var(--gold-light);font-size:10px;letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:6px;}
+
+/* PREISE */
+.pricing-grid{
+  display:grid;grid-template-columns:1fr 1.15fr;
+  gap:1px;background:var(--border);
+  max-width:860px;
+}
+.price-card{
+  background:var(--black2);padding:56px 48px;
+  position:relative;
+}
+.price-card.featured{background:var(--black3);}
+.price-badge{
+  position:absolute;top:0;right:0;
+  background:var(--red);color:var(--white);
+  font-size:9px;letter-spacing:2px;text-transform:uppercase;
+  padding:8px 16px;font-weight:700;font-family:'Syne',sans-serif;
+}
+.price-type{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:20px;
+}
+.price-num{
+  font-family:'Syne',sans-serif;font-size:72px;font-weight:800;
+  line-height:1;letter-spacing:-2px;color:var(--white);
+  margin-bottom:4px;
+}
+.price-num sup{font-size:28px;vertical-align:super;color:var(--gold);}
+.price-note{font-size:12px;color:var(--gray);letter-spacing:1px;margin-bottom:40px;line-height:1.6;}
+.price-list{list-style:none;display:flex;flex-direction:column;gap:12px;margin-bottom:40px;}
+.price-list li{font-size:13px;color:var(--gray);display:flex;align-items:center;gap:10px;}
+.price-list li::before{content:'—';color:var(--gold);font-size:10px;flex-shrink:0;}
+
+/* FAQ */
+.faq-list{max-width:760px;display:flex;flex-direction:column;gap:0;}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-q{
+  width:100%;background:none;border:none;
+  color:var(--white);text-align:left;
+  padding:28px 0;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;
+  font-family:'Syne',sans-serif;font-size:17px;font-weight:600;
+  gap:20px;transition:color .2s;
+}
+.faq-q:hover{color:var(--gold);}
+.faq-icon{
+  color:var(--gold);font-size:22px;font-weight:300;
+  flex-shrink:0;transition:transform .3s;line-height:1;
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease,padding .3s;
+  font-size:14px;line-height:1.8;color:var(--gray);
+}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:28px;}
+
+/* KONTAKT */
+.contact-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;
+}
+.contact-details{display:flex;flex-direction:column;gap:24px;margin-top:40px;}
+.contact-item{
+  display:flex;align-items:center;gap:16px;
+  font-size:14px;color:var(--gray);
+}
+.c-icon{
+  width:40px;height:40px;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;flex-shrink:0;
+  color:var(--gold);
+}
+.contact-form{display:flex;flex-direction:column;gap:20px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fg label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);}
+.fg input,.fg textarea{
+  background:var(--black2);
+  border:1px solid var(--border);
+  color:var(--white);padding:14px 18px;
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:300;
+  outline:none;transition:border-color .3s;resize:none;
+}
+.fg input:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg textarea{height:110px;}
+
+/* FOOTER */
+footer{
+  padding:32px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+footer p{font-size:11px;color:var(--gray);letter-spacing:1px;}
+footer span{color:var(--gold);}
+
+/* ANIMATIONS */
+.reveal{
+  opacity:0;transform:translateY(32px);
+  transition:opacity .8s ease,transform .8s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:768px){
+  nav{padding:16px 24px;}
+  .nav-links{display:none;}
+  .hero{padding:60px 24px 48px;}
+  .stats{grid-template-columns:1fr;border-bottom:none;}
+  .stat{border-right:none;border-bottom:1px solid var(--border);padding:32px 24px;}
+  .sec-inner{padding:64px 24px;}
+  .services{grid-template-columns:1fr;}
+  .pricing-grid{grid-template-columns:1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  footer{flex-direction:column;gap:12px;padding:24px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-mark">MM</div>
+    <div class="logo-text">Mahrous <span>Media</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#leistungen">Leistungen</a></li>
+    <li><a href="#preise">Preise</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-cta">Jetzt starten →</a>
+</nav>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span>Website in 2 Tagen</span><span class="sep">✦</span>
+    <span>Wendelstein & Landkreis Roth</span><span class="sep">✦</span>
+    <span>Mahrous Media</span><span class="sep">✦</span>
+    <span>Professionell & Günstig</span><span class="sep">✦</span>
+    <span>Mehr Kunden online</span><span class="sep">✦</span>
+    <span>Website in 2 Tagen</span><span class="sep">✦</span>
+    <span>Wendelstein & Landkreis Roth</span><span class="sep">✦</span>
+    <span>Mahrous Media</span><span class="sep">✦</span>
+    <span>Professionell & Günstig</span><span class="sep">✦</span>
+    <span>Mehr Kunden online</span><span class="sep">✦</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-label">Webdesign · Region Wendelstein & Roth</div>
+  <h1>Dein Business.<br><em>Dominiert.</em></h1>
+  <p class="hero-sub">Professionelle Websites in 2 Tagen — damit deine Kunden dich online finden, bevor sie zur Konkurrenz gehen.</p>
+  <div class="hero-actions">
+    <a href="#kontakt" class="btn-primary">Kostenlose Demo anfragen →</a>
+    <a href="#leistungen" class="btn-secondary">Mehr erfahren</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat reveal">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Tage bis zur fertigen Website</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">0€</div>
+    <div class="stat-label">Kosten für die Demo</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-num">100%</div>
+    <div class="stat-label">Lokal aus der Region</div>
+  </div>
+</div>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Was ich mache</div>
+    <h2 class="sec-title reveal">Was ich für<br>dich <em>tue.</em></h2>
+    <div class="services">
+      <div class="svc reveal">
+        <div class="svc-num">01</div>
+        <div class="svc-icon">🌐</div>
+        <div class="svc-title">Website Design</div>
+        <div class="svc-desc">Moderne, mobilfreundliche Websites die Kunden überzeugen — maßgeschneidert, kein Template.</div>
+        <div class="svc-example"><strong>Beispiel</strong>Ein Geschäft in Wendelstein hatte keine Website. Nach dem Launch kamen neue Kunden gezielt über Google.</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">02</div>
+        <div class="svc-icon">🔄</div>
+        <div class="svc-title">Website Relaunch</div>
+        <div class="svc-desc">Deine Website sieht aus wie aus den 2000ern? Ich gestalte sie komplett neu — inklusive deiner bisherigen Domain.</div>
+        <div class="svc-example"><strong>Beispiel</strong>Papyros Wendelstein: 4,9 Sterne auf Google, aber veraltete Website. Nach dem Relaunch endlich sichtbar.</div>
+      </div>
+      <div class="svc reveal">
+        <div class="svc-num">03</div>
+        <div class="svc-icon">🛠</div>
+        <div class="svc-title">Wartung & Pflege</div>
+        <div class="svc-desc">Hosting, Updates und Änderungen — ich kümmere mich darum, du konzentrierst dich auf dein Geschäft.</div>
+        <div class="svc-example"><strong>Beispiel</strong>Ab 40 €/Monat — günstiger als ein Mitarbeiter, verlässlicher als ein Praktikant.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PREISE -->
+<section id="preise">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Transparent & fair</div>
+    <h2 class="sec-title reveal">Klare <em>Preise.</em></h2>
+    <div class="pricing-grid">
+      <div class="price-card reveal">
+        <div class="price-type">Einmalig</div>
+        <div class="price-num"><sup>ab</sup>200</div>
+        <div class="price-note">Einmalige Zahlung · € inkl.<br>Du zahlst einmal, die Website gehört dir.<br><span style="color:var(--gold);font-size:11px;letter-spacing:1px;">✦ Preis ist verhandelbar</span></div>
+        <ul class="price-list">
+          <li>Bis zu 5 Seiten</li>
+          <li>Mobilfreundliches Design</li>
+          <li>Kontaktformular</li>
+          <li>Google Maps Integration</li>
+          <li>DSGVO-konform</li>
+        </ul>
+        <a href="#kontakt" class="btn-primary" style="width:100%;justify-content:center;">Anfragen →</a>
+      </div>
+      <div class="price-card featured reveal">
+        <div class="price-badge">Empfohlen</div>
+        <div class="price-type">Monatlich</div>
+        <div class="price-num"><sup>ab</sup>40</div>
+        <div class="price-note">Erste 3 Monate testen · danach 49 €/Monat<br>Kein Risiko. Kündbar. Alles inklusive.</div>
+        <ul class="price-list">
+          <li>Website ohne Anfangszahlung</li>
+          <li>Hosting & Domain inklusive</li>
+          <li>Monatliche Updates</li>
+          <li>Unbegrenzte Änderungen</li>
+          <li>Persönlicher Ansprechpartner</li>
+        </ul>
+        <a href="#kontakt" class="btn-primary" style="width:100%;justify-content:center;">Anfragen →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="sec-inner">
+    <div class="sec-tag reveal">Häufige Fragen</div>
+    <h2 class="sec-title reveal">Alles klar<br><em>erklärt.</em></h2>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">Was macht Mahrous Media genau? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Ich erstelle professionelle Websites für lokale Unternehmen in Wendelstein und dem Landkreis Roth — in nur 2 Tagen, zu fairen Preisen und mit persönlichem Service direkt aus der Region.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Was kostet eine Zusammenarbeit? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Einmalig ab 550 € oder monatlich ab 40 € in den ersten 3 Monaten, danach 49 €/Monat. Im kostenlosen Erstgespräch klären wir gemeinsam was für dich am besten passt.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Wie läuft eine Zusammenarbeit ab? <span class="faq-icon">+</span></button>
+        <div class="faq-a">① Kostenlose Demo anfragen → ② Ich baue eine Demo deiner Website → ③ Du siehst das Ergebnis kostenlos → ④ Gefällt es dir, gehen wir live. Kein Druck, kein Risiko.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Wirklich nur 2 Tage? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Ja. Ich arbeite effizient und fokussiert. Sobald ich alle Infos von dir habe, ist die Website in 2 Werktagen fertig und live. Kein wochenlanger hin und her.</div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Macht ihr das auch für ganz kleine Geschäfte? <span class="faq-icon">+</span></button>
+        <div class="faq-a">Ja — besonders für kleine lokale Betriebe. Ein Handwerker, eine Boutique, ein Fachgeschäft — genau diese Unternehmen profitieren am meisten von einer professionellen Online-Präsenz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="sec-inner">
+    <div class="contact-grid">
+      <div>
+        <div class="sec-tag reveal">Jetzt starten</div>
+        <h2 class="sec-title reveal" style="margin-bottom:0;">Bereit für<br>deine neue <em>Website?</em></h2>
+        <p style="margin-top:24px;font-size:14px;line-height:1.8;color:var(--gray);max-width:380px;" class="reveal">Ich erstelle dir kostenlos und unverbindlich eine Demo — damit du siehst was möglich ist, bevor du dich entscheidest.</p>
+        <div class="contact-details">
+          <div class="contact-item reveal">
+            <div class="c-icon">📍</div>
+            Region Wendelstein & Landkreis Roth
+          </div>
+          <div class="contact-item reveal">
+            <div class="c-icon">📞</div>
+            0173 8743203
+          </div>
+          <div class="contact-item reveal">
+            <div class="c-icon">✉</div>
+            mahroudabdul@gmail.com
+          </div>
+        </div>
+      </div>
+      <div class="contact-form reveal" style="display:flex;flex-direction:column;justify-content:center;gap:32px;">
+        <p style="font-size:15px;line-height:1.8;color:var(--gray);">Schreib mir direkt auf WhatsApp — ich antworte innerhalb von wenigen Stunden persönlich.</p>
+        <a href="https://wa.me/491738743203?text=Hallo%20Abdul%2C%20ich%20interessiere%20mich%20f%C3%BCr%20eine%20Website%20von%20Mahrous%20Media!" target="_blank" style="background:#25D366;color:#fff;border:none;cursor:pointer;padding:20px 36px;font-size:15px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;font-family:'Syne',sans-serif;width:100%;text-align:center;text-decoration:none;display:block;">
+          💬 Auf WhatsApp schreiben
+        </a>
+        <p style="font-size:12px;color:var(--gray);text-align:center;">Oder per E-Mail: <span style="color:var(--gold);">mahroudabdul@gmail.com</span></p>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPRESSUM POPUP -->
+<div id="impressum-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;overflow-y:auto;padding:40px 24px;">
+  <div style="max-width:700px;margin:0 auto;background:#111;padding:48px;position:relative;">
+    <button onclick="document.getElementById('impressum-popup').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#C9A84C;font-size:28px;cursor:pointer;">✕</button>
+    <h1 style="font-family:'Syne',sans-serif;font-size:32px;margin-bottom:24px;color:#F5F0F0;">Impressum</h1>
+    <p style="color:#888;line-height:1.8;font-size:14px;">Abdul Mahrous<br>Webdesigner<br>Raubersrieder Weg 23<br>90530 Wendelstein</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:20px;margin:24px 0 12px;color:#C9A84C;">Kontakt</h2>
+    <p style="color:#888;line-height:1.8;font-size:14px;">Telefon: 0173 8743203<br>E-Mail: mahroudabdul@gmail.com</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:20px;margin:24px 0 12px;color:#C9A84C;">Berufsbezeichnung</h2>
+    <p style="color:#888;line-height:1.8;font-size:14px;">Berufsbezeichnung: Webdesigner<br>Verliehen in: Deutschland</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:20px;margin:24px 0 12px;color:#C9A84C;">Verbraucherstreitbeilegung</h2>
+    <p style="color:#888;line-height:1.8;font-size:14px;">Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+    <p style="color:#555;font-size:12px;margin-top:24px;">Quelle: eRecht24</p>
+  </div>
+</div>
+
+<!-- DATENSCHUTZ POPUP -->
+<div id="datenschutz-popup" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;overflow-y:auto;padding:40px 24px;">
+  <div style="max-width:700px;margin:0 auto;background:#111;padding:48px;position:relative;">
+    <button onclick="document.getElementById('datenschutz-popup').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#C9A84C;font-size:28px;cursor:pointer;">✕</button>
+    <h1 style="font-family:'Syne',sans-serif;font-size:32px;margin-bottom:24px;color:#F5F0F0;">Datenschutzerklärung</h1>
+    <h2 style="font-family:'Syne',sans-serif;font-size:20px;margin:24px 0 12px;color:#C9A84C;">1. Datenschutz auf einen Blick</h2>
+    <p style="color:#888;line-height:1.8;font-size:14px;">Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:20px;margin:24px 0 12px;color:#C9A84C;">Verantwortliche Stelle</h2>
+    <p style="color:#888;line-height:1.8;font-size:14px;">Abdul Mahrous<br>Raubersrieder Weg 23<br>90530 Wendelstein<br>Telefon: 0173 8743203<br>E-Mail: mahroudabdul@gmail.com</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:20px;margin:24px 0 12px;color:#C9A84C;">2. Hosting</h2>
+    <p style="color:#888;line-height:1.8;font-size:14px;">Diese Website wird extern bei GitHub gehostet. Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern von GitHub gespeichert.</p>
+    <h2 style="font-family:'Syne',sans-serif;font-size:20px;margin:24px 0 12px;color:#C9A84C;">3. Ihre Rechte</h2>
+    <p style="color:#888;line-height:1.8;font-size:14px;">Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger. Sie haben außerdem ein Recht auf Berichtigung oder Löschung dieser Daten sowie ein Beschwerderecht bei der zuständigen Aufsichtsbehörde.</p>
+    <p style="color:#555;font-size:12px;margin-top:24px;">Quelle: eRecht24</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <span>Mahrous Media</span> · Abdul Mahrous · Webdesign Region Roth</p>
+  <p>
+    <a href="#" onclick="document.getElementById('impressum-popup').style.display='block'" style="color:#C9A84C;text-decoration:none;margin-right:16px;">Impressum</a>
+    <a href="#" onclick="document.getElementById('datenschutz-popup').style.display='block'" style="color:#C9A84C;text-decoration:none;">Datenschutz</a>
+  </p>
+</footer>
+
+<script>
+// Send mail via mailto
+function sendMail(e) {
+  e.preventDefault();
+  const name = document.getElementById('fname').value;
+  const company = document.getElementById('fcompany').value;
+  const email = document.getElementById('femail').value;
+  const phone = document.getElementById('fphone').value;
+  const message = document.getElementById('fmessage').value;
+  const subject = encodeURIComponent('Demo Anfrage – ' + name);
+  const body = encodeURIComponent(
+    'Name: ' + name + '\n' +
+    'Unternehmen: ' + company + '\n' +
+    'E-Mail: ' + email + '\n' +
+    'Telefon: ' + phone + '\n\n' +
+    'Nachricht:\n' + message
+  );
+  window.location.href = 'mailto:mahroudabdul@gmail.com?subject=' + subject + '&body=' + body;
+}
+
+// FAQ
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+});
+
+// Scroll reveal
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 80);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
